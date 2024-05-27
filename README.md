@@ -17,7 +17,7 @@ To detect early signs of potential churn, one must first develop a holistic view
 As a result, by addressing churn, these businesses may not only preserve their market position, but also grow and thrive.
 
 ## II. Dataset Source
-Dataset:`https://www.kaggle.com/datasets/blastchar/telco-customer-churn/code?datasetId=13996&sortBy=voteCount`
+URL: `https://www.kaggle.com/datasets/blastchar/telco-customer-churn/code?datasetId=13996&sortBy=voteCount`
 
 ## III. Methods Used
 - Exploratory Data Analysis (EDA)
@@ -32,25 +32,25 @@ Dataset:`https://www.kaggle.com/datasets/blastchar/telco-customer-churn/code?dat
 The project is organized as follows:
 ```
 ├── eda
-│   └── eda.ipynb            # Notebook for Exploratory Data Analysis
-│   └── helper_function.py   # Pyton script for data wrangling
+│   └── eda.ipynb               # Notebook for Exploratory Data Analysis
+│   └── helper_function.py      # Pyton script for data wrangling
 ├── model
-│   └── catboost_model.cbm   # Trained CatBoost model
+│   └── catboost_model.cbm      # Trained CatBoost model
 ├── src
-│   └── fast-api.py          # api script
-|   └── predict.py           # model prediction script
-|   └── streamlit.py         # web interface
-|   └── train_model.py       # script for training model
-├── Dockerfile               # Dockerfile for containerization
-├── requirements.txt         # Python dependencies
-├── Telco-Customer-Churn.csv # Dataset
-└── README.md                # Project documentation
+│   └── fast-api.py             # api script
+|   └── predict.py              # model prediction script
+|   └── streamlit.py            # web interface
+|   └── train_model.py          # script for training model
+├── Dockerfile                  # Dockerfile for containerization
+├── requirements.txt            # Python dependencies
+├── Telco-Customer-Churn.csv    # Dataset
+└── README.md                   # Project documentation
 ```
 
-## Results
+## V. Results
 The CatBoost model achieved an `accuracy of 74%`, `Recall of 81%`, `ROC_AUC of 76%` on the test dataset. The model is deployed as a web service using FastAPI and Docker, allowing for easy integration with other systems.
 
-## How to Run
+## VI. How to run Dockerfile
 1. Clone the repository:
    ```sh
    git clone https://github.com/beemabee/Telco-Customer-Churn-Prediction.git
@@ -61,11 +61,13 @@ The CatBoost model achieved an `accuracy of 74%`, `Recall of 81%`, `ROC_AUC of 7
    docker build --no-cache -t telco-churn-prediction-app .
    docker run -it telco-churn-prediction-app
    ```
-3. Navigate to the `src` directory and run the Streamlit app
+## VII. How to run Webapp
+1. Navigate to the `src` directory and run the Streamlit app
    ```sh
    cd src
    streamlit run streamlit.py
    ```
+2. Open your browser and go to `http://localhost:8501`
    
-## Conclusion
+## VIII. Conclusion
 This project demonstrates an end-to-end machine learning workflow, from data analysis to model deployment. The use of Docker ensures that the application can be easily deployed and scaled.
