@@ -4,7 +4,7 @@ from fastapi import FastAPI
 from catboost import CatBoostClassifier
 
 # path to the model
-MODEL_PATH = r'D:\DS_ML_Project\Telco-Customer-Churn-Prediction\Model\catboost_model.cbm'
+MODEL_PATH = r'D:\DS_ML_Project\Telco-Customer-Churn-Prediction\model\catboost_model.cbm'
 
 # function to load the trained model
 def load_model():

@@ -8,12 +8,12 @@ from catboost import CatBoostClassifier, Pool
 import joblib 
 
 # path to the trained model 
-MODEL_PATH = r'D:\DS_ML_Project\Telco-Customer-Churn-Prediction\Model\catboost_model.cbm'
-DATA_PATH = r'D:\DS_ML_Project\Telco-Customer-Churn-Prediction\Model\data\churn_data_regulated.parquet'
-X_TRAIN_PATH = r'D:\DS_ML_Project\Telco-Customer-Churn-Prediction\Model\data\X_train.pkl'
-X_TEST_PATH = r'D:\DS_ML_Project\Telco-Customer-Churn-Prediction\Model\data\X_test.pkl'
-Y_TRAIN_PATH = r'D:\DS_ML_Project\Telco-Customer-Churn-Prediction\Model\data\y_train.pkl'
-Y_TEST_PATH = r'D:\DS_ML_Project\Telco-Customer-Churn-Prediction\Model\data\y_test.pkl'
+MODEL_PATH = r'D:\DS_ML_Project\Telco-Customer-Churn-Prediction\model\catboost_model.cbm'
+DATA_PATH = r'D:\DS_ML_Project\Telco-Customer-Churn-Prediction\data\churn_data_regulated.parquet'
+X_TRAIN_PATH = r'D:\DS_ML_Project\Telco-Customer-Churn-Prediction\data\X_train.pkl'
+X_TEST_PATH = r'D:\DS_ML_Project\Telco-Customer-Churn-Prediction\data\X_test.pkl'
+Y_TRAIN_PATH = r'D:\DS_ML_Project\Telco-Customer-Churn-Prediction\data\y_train.pkl'
+Y_TEST_PATH = r'D:\DS_ML_Project\Telco-Customer-Churn-Prediction\data\y_test.pkl'
 
 st.set_page_config(page_title='Telco Customer Churn Prediction')
 
@@ -105,7 +105,7 @@ def main():
         customer_index = X_test[X_test['customerID'] == customer_id].index[0]
         st.write(f'Customer {customer_id}: Actual value for the Customer Churn : {y_test.iloc[customer_index]}')
         y_pred = model.predict(X_test)
-        st.write(f"Customer {customer_id}: CatBoost Model's prediction for the Customer Churn : {y_pred[customer_index]}")
+        st.write(f"Customer {customer_id}: Trained Model prediction for the Customer Churn : {y_pred[customer_index]}")
         plot_shap(model, data, customer_id, X_train=X_train, X_test=X_test)
     
     # If Feature Importance is selected
@@ -172,7 +172,8 @@ def main():
 
         big_text = f"<h1>Churn Probability: {formatted_churn_probability}</h1>"
         st.markdown(big_text, unsafe_allow_html=True)
-        st.write(new_customer_data.to_dict())
+        customer_data_dict = new_customer_data.to_dict(orient='records')[0]
+        st.json(customer_data_dict)
 
 if __name__ == "__main__":
     main()

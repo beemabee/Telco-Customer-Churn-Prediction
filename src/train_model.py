@@ -52,13 +52,13 @@ X_test = strat_test_set.drop('Churn', axis=1)
 y_test = strat_test_set['Churn'].copy()
 
 # Save the preprocessed DataFrame as a parquet file
-df.to_parquet(r'D:\DS_ML_Project\Telco-Customer-Churn-Prediction\Model\data\churn_data_regulated.parquet')
+df.to_parquet(r'D:\DS_ML_Project\Telco-Customer-Churn-Prediction\data\churn_data_regulated.parquet')
 
 # Save the datasets
-joblib.dump(X_train, r'D:\DS_ML_Project\Telco-Customer-Churn-Prediction\Model\data\X_train.pkl')
-joblib.dump(y_train, r'D:\DS_ML_Project\Telco-Customer-Churn-Prediction\Model\data\y_train.pkl')
-joblib.dump(X_test, r'D:\DS_ML_Project\Telco-Customer-Churn-Prediction\Model\data\X_test.pkl')
-joblib.dump(y_test, r'D:\DS_ML_Project\Telco-Customer-Churn-Prediction\Model\data\y_test.pkl')
+joblib.dump(X_train, r'D:\DS_ML_Project\Telco-Customer-Churn-Prediction\data\X_train.pkl')
+joblib.dump(y_train, r'D:\DS_ML_Project\Telco-Customer-Churn-Prediction\data\y_train.pkl')
+joblib.dump(X_test, r'D:\DS_ML_Project\Telco-Customer-Churn-Prediction\data\X_test.pkl')
+joblib.dump(y_test, r'D:\DS_ML_Project\Telco-Customer-Churn-Prediction\data\y_test.pkl')
 
 #  ---------------------------------------------- CATBOOST ---------------------------------------
 
@@ -83,6 +83,6 @@ result = pd.DataFrame({'Accuracy': accuracy, 'Recall': recall, 'Roc_Auc': roc_au
 print(result)
 
 # Save the model in the 'model' directory
-model_dir = r"D:\DS_ML_Project\Telco-Customer-Churn-Prediction\Model"
+model_dir = r"D:\DS_ML_Project\Telco-Customer-Churn-Prediction\model"
 model_path = os.path.join(model_dir, "catboost_model.cbm")
 cat_model.save_model(model_path)
