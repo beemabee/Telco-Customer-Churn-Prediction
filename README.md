@@ -61,6 +61,11 @@ The CatBoost model achieved an `accuracy of 74%`, `Recall of 81%`, `ROC_AUC of 7
    docker build --no-cache -t telco-churn-prediction-app .
    docker run -it telco-churn-prediction-app
    ```
+3. Navigate to the `src` directory and run the Streamlit app
+   ```sh
+   cd src
+   streamlit run streamlit.py
+   ```
    
 ## Conclusion
 This project demonstrates an end-to-end machine learning workflow, from data analysis to model deployment. The use of Docker ensures that the application can be easily deployed and scaled.
